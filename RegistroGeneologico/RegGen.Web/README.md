@@ -37,3 +37,6 @@ You've created a new ASP.NET Core project. [Learn what's new](https://go.microso
 *   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
 
 We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
+
+## Plantilla utilizada
+* Para este proyecto web utilizada la Plantilla [ASP.NET Core Template Pack](https://visualstudiogallery.msdn.microsoft.com/31a3eab5-e62b-4030-9226-b5e4c9e1ffb5)
