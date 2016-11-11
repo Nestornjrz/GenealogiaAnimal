@@ -12,9 +12,7 @@ Utiliza los siguientes componentes
 
 ***
 
-Para poder usar este proyecto tiene que crearse una base de datos llamada RegGeneaologico y hacer correr el script
-sql **SqlDelRegistroGenealogico.SQL**
-
-***OJO*** Hay que crear un esquema llamado RegG
+Para poder usar este proyecto tiene que crearse una base de datos llamada RegGeneaologico, crear un esquema llamado **RegG** en RegGeneaologico/Security/Schemas y hacer correr el script
+sql **SqlDelRegistroGenealogico.SQL**.
 
 Luego todo funcionara :) ...
