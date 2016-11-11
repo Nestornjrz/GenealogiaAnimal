@@ -15,4 +15,4 @@ Utiliza los siguientes componentes
 Para poder usar este proyecto tiene que crearse una base de datos llamada RegGeneaologico y hacer correr el script
 sql **SqlDelRegistroGenealogico.SQL**
 
-Luego todo funcionara :)
+Luego todo funcionara :) ...
