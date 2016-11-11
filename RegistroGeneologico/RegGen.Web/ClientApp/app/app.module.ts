@@ -6,6 +6,9 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { RazasComponent } from './components/razas/razas.component';
+
+import { RazaService } from './components/razas/raza.service';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -14,7 +17,8 @@ import { CounterComponent } from './components/counter/counter.component';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        RazasComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -23,9 +27,11 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'razas', component: RazasComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+    ],
+    providers:[RazaService]
 })
 export class AppModule {
 }

@@ -1,0 +1,12 @@
+﻿<h1>Listado de razas</h1>
+<!--<pre>{{razas | json}}</pre>-->
+<table class="table table-bordered table-condensed table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Raza</th>
+    </tr>
+    <tr *ngFor='let raza of razas'>
+        <td>{{raza.razaId}}</td>
+        <td>{{raza.nombreRaza}}</td>
+    </tr>
+</table>
