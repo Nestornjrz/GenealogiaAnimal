@@ -39,7 +39,7 @@ namespace Util.Impresion.Web.Controllers {
                         file.CopyTo(fileStream);
                     }
                 }       
-                mensaje = "File uploaded successfully";
+                mensaje = "Subio el archivo " + file.FileName;
             } catch (Exception ex) {
                 mensaje = string.Format("Error: {0}", ex.Message);
 
