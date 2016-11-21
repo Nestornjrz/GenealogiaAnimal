@@ -6,6 +6,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { UploadFileComponent } from './components/uploadFile/uploadfile.component';
+import { FileSelectDirective } from 'ng2-file-upload'; //https://github.com/valor-software/ng2-file-upload/issues/418
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -14,7 +16,9 @@ import { CounterComponent } from './components/counter/counter.component';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        UploadFileComponent,
+        FileSelectDirective //https://github.com/valor-software/ng2-file-upload/issues/418
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -23,6 +27,7 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'upload-file', component: UploadFileComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

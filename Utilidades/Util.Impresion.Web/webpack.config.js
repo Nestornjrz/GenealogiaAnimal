@@ -1,3 +1,4 @@
+/// <binding ProjectOpened='Run - Development' />
 var isDevBuild = process.argv.indexOf('--env.prod') < 0;
 var path = require('path');
 var webpack = require('webpack');
