@@ -1,21 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Util.Impresion.Web.Entities {
-    public class GuiaDbContext : DbContext {
-        public GuiaDbContext(DbContextOptions opciones) : base(opciones) {
+namespace Util.Impresion.Web.ReverseEngenieer
+{
+    public partial class GuiasBorrarContext : DbContext
+    {
+        public virtual DbSet<Guias> Guias { get; set; }
+        public virtual DbSet<GuiasDet> GuiasDet { get; set; }
+        public virtual DbSet<Imagenes> Imagenes { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=GuiasBorrar;Trusted_Connection=True;");
         }
-        public DbSet<Guias> GuiasSet { get; set; }
-        public DbSet<GuiasDet> GuiasDetSet { get; set; }
-        public DbSet<Imagenes> ImagenesSet { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<Guias>(entity => {
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Guias>(entity =>
+            {
                 entity.HasKey(e => e.GuiaId)
                     .HasName("Key1");
 
@@ -26,7 +30,8 @@ namespace Util.Impresion.Web.Entities {
                 entity.Property(e => e.Fecha).HasColumnType("date");
             });
 
-            modelBuilder.Entity<GuiasDet>(entity => {
+            modelBuilder.Entity<GuiasDet>(entity =>
+            {
                 entity.HasKey(e => e.GuiaDetId)
                     .HasName("Pk_GuiasDet");
 
@@ -56,9 +61,10 @@ namespace Util.Impresion.Web.Entities {
                     .HasConstraintName("fk_GuiasDet-Imagenes");
             });
 
-            modelBuilder.Entity<Imagenes>(entity => {
+            modelBuilder.Entity<Imagenes>(entity =>
+            {
                 entity.HasKey(e => e.ImagenId)
-                    .HasName("Key_Imagenes");
+                    .HasName("Key2");
 
                 entity.ToTable("Imagenes", "guias");
 

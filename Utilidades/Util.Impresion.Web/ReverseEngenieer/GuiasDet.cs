@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Util.Impresion.Web.ReverseEngenieer
+{
+    public partial class GuiasDet
+    {
+        public long GuiaDetId { get; set; }
+        public long GuiaId { get; set; }
+        public int? ImagenId { get; set; }
+
+        public virtual Guias Guia { get; set; }
+        public virtual Imagenes Imagen { get; set; }
+    }
+}
