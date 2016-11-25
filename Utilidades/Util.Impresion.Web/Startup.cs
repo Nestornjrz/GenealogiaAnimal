@@ -54,6 +54,7 @@ namespace Util.Impresion.Web
             }
 
             app.UseStaticFiles();
+            //app.UseDirectoryBrowser();
 
             app.UseMvc(routes =>
             {
