@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Util.Impresion.Web.Controllers {
     [Route("api/[controller]")]
-    public class ListadoArchivoCargados : Controller {
+    public class ListadoArchivoCargadosController : Controller {
         private IHostingEnvironment _environment;
 
-        public ListadoArchivoCargados(IHostingEnvironment environment) {
+        public ListadoArchivoCargadosController(IHostingEnvironment environment) {
             _environment = environment;
         }
         // GET: api/values
@@ -24,8 +24,10 @@ namespace Util.Impresion.Web.Controllers {
                   Path.Combine(_environment.WebRootPath,"uploads"), "*",
                   SearchOption.AllDirectories
                 )) {
-                archivos.Add(file);
+                var separados = file.Split('\\');                
+                archivos.Add("uploads/" + separados[separados.Length - 1]);
             }
+           
             return archivos;
         }
 
