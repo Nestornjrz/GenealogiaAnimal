@@ -11,8 +11,11 @@ namespace Util.Impresion.Web.ReverseEngenieer
         }
 
         public int ImagenId { get; set; }
+        public int ProveedorId { get; set; }
+        public bool VigenteSn { get; set; }
         public string Nombre { get; set; }
 
         public virtual ICollection<GuiasDet> GuiasDet { get; set; }
+        public virtual ProveeClientes Proveedor { get; set; }
     }
 }

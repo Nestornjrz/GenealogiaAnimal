@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Util.Impresion.Web.Entities {
     public class GuiaDbContext : DbContext {
+        public virtual DbSet<Guias> Guias { get; set; }
+        public virtual DbSet<GuiasDet> GuiasDet { get; set; }
+        public virtual DbSet<Imagenes> Imagenes { get; set; }
+        public virtual DbSet<ProveeClientes> ProveeClientes { get; set; }
+
         public GuiaDbContext(DbContextOptions opciones) : base(opciones) {
 
         }
-        public DbSet<Guias> GuiasSet { get; set; }
-        public DbSet<GuiasDet> GuiasDetSet { get; set; }
-        public DbSet<Imagenes> ImagenesSet { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Guias>(entity => {
@@ -32,6 +34,9 @@ namespace Util.Impresion.Web.Entities {
 
                 entity.ToTable("GuiasDet", "guias");
 
+                entity.HasIndex(e => e.ClienteId)
+                    .HasName("IX_GuasDet_ClienteID");
+
                 entity.HasIndex(e => e.GuiaId)
                     .HasName("IX_GuiasDet_GuiaID");
 
@@ -40,9 +45,16 @@ namespace Util.Impresion.Web.Entities {
 
                 entity.Property(e => e.GuiaDetId).HasColumnName("GuiaDetID");
 
+                entity.Property(e => e.ClienteId).HasColumnName("ClienteID");
+
                 entity.Property(e => e.GuiaId).HasColumnName("GuiaID");
 
                 entity.Property(e => e.ImagenId).HasColumnName("ImagenID");
+
+                entity.HasOne(d => d.Cliente)
+                    .WithMany(p => p.GuiasDet)
+                    .HasForeignKey(d => d.ClienteId)
+                    .HasConstraintName("Fk_GuiasDet-ProveeClientes");
 
                 entity.HasOne(d => d.Guia)
                     .WithMany(p => p.GuiasDet)
@@ -58,9 +70,12 @@ namespace Util.Impresion.Web.Entities {
 
             modelBuilder.Entity<Imagenes>(entity => {
                 entity.HasKey(e => e.ImagenId)
-                    .HasName("Key_Imagenes");
+                    .HasName("pk_Imagenes");
 
                 entity.ToTable("Imagenes", "guias");
+
+                entity.HasIndex(e => e.ProveedorId)
+                    .HasName("IX_Imagenes_ProveedorID");
 
                 entity.Property(e => e.ImagenId)
                     .HasColumnName("ImagenID")
@@ -68,8 +83,36 @@ namespace Util.Impresion.Web.Entities {
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
-                    .HasColumnType("varchar(200)");
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.ProveedorId).HasColumnName("ProveedorID");
+
+                entity.HasOne(d => d.Proveedor)
+                    .WithMany(p => p.Imagenes)
+                    .HasForeignKey(d => d.ProveedorId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("Fk_Imagenes-ProveeClientes");
+            });
+
+            modelBuilder.Entity<ProveeClientes>(entity => {
+                entity.HasKey(e => e.ProveeClienteId)
+                    .HasName("pk_Estancias");
+
+                entity.ToTable("ProveeClientes", "guias");
+
+                entity.Property(e => e.ProveeClienteId)
+                    .HasColumnName("ProveeClienteID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.ClienteSn).HasDefaultValueSql("0");
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.ProveedorSn).HasDefaultValueSql("0");
             });
         }
+
     }
 }

@@ -8,7 +8,9 @@ namespace Util.Impresion.Web.ReverseEngenieer
         public long GuiaDetId { get; set; }
         public long GuiaId { get; set; }
         public int? ImagenId { get; set; }
+        public int? ClienteId { get; set; }
 
+        public virtual ProveeClientes Cliente { get; set; }
         public virtual Guias Guia { get; set; }
         public virtual Imagenes Imagen { get; set; }
     }

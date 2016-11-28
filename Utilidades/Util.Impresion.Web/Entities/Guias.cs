@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Util.Impresion.Web.Entities
-{
+namespace Util.Impresion.Web.Entities {
     public partial class Guias
     {
         public Guias()

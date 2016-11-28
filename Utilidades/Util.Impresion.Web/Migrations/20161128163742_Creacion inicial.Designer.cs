@@ -8,8 +8,8 @@ using Util.Impresion.Web.Entities;
 namespace Util.Impresion.Web.Migrations
 {
     [DbContext(typeof(GuiaDbContext))]
-    [Migration("20161121163618_Creacion Inicial")]
-    partial class CreacionInicial
+    [Migration("20161128163742_Creacion inicial")]
+    partial class Creacioninicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,9 @@ namespace Util.Impresion.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("GuiaDetID");
 
+                    b.Property<int?>("ClienteId")
+                        .HasColumnName("ClienteID");
+
                     b.Property<long>("GuiaId")
                         .HasColumnName("GuiaID");
 
@@ -48,6 +51,9 @@ namespace Util.Impresion.Web.Migrations
 
                     b.HasKey("GuiaDetId")
                         .HasName("Pk_GuiasDet");
+
+                    b.HasIndex("ClienteId")
+                        .HasName("IX_GuasDet_ClienteID");
 
                     b.HasIndex("GuiaId")
                         .HasName("IX_GuiasDet_GuiaID");
@@ -65,16 +71,51 @@ namespace Util.Impresion.Web.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnName("ProveedorID");
+
+                    b.Property<bool>("VigenteSn");
 
                     b.HasKey("ImagenId")
-                        .HasName("Key_Imagenes");
+                        .HasName("pk_Imagenes");
+
+                    b.HasIndex("ProveedorId")
+                        .HasName("IX_Imagenes_ProveedorID");
 
                     b.ToTable("Imagenes","guias");
                 });
 
+            modelBuilder.Entity("Util.Impresion.Web.Entities.ProveeClientes", b =>
+                {
+                    b.Property<int>("ProveeClienteId")
+                        .HasColumnName("ProveeClienteID");
+
+                    b.Property<bool>("ClienteSn")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("0");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<bool>("ProveedorSn")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("0");
+
+                    b.HasKey("ProveeClienteId")
+                        .HasName("pk_Estancias");
+
+                    b.ToTable("ProveeClientes","guias");
+                });
+
             modelBuilder.Entity("Util.Impresion.Web.Entities.GuiasDet", b =>
                 {
+                    b.HasOne("Util.Impresion.Web.Entities.ProveeClientes", "Cliente")
+                        .WithMany("GuiasDet")
+                        .HasForeignKey("ClienteId");
+
                     b.HasOne("Util.Impresion.Web.Entities.Guias", "Guia")
                         .WithMany("GuiasDet")
                         .HasForeignKey("GuiaId")
@@ -83,6 +124,13 @@ namespace Util.Impresion.Web.Migrations
                     b.HasOne("Util.Impresion.Web.Entities.Imagenes", "Imagen")
                         .WithMany("GuiasDet")
                         .HasForeignKey("ImagenId");
+                });
+
+            modelBuilder.Entity("Util.Impresion.Web.Entities.Imagenes", b =>
+                {
+                    b.HasOne("Util.Impresion.Web.Entities.ProveeClientes", "Proveedor")
+                        .WithMany("Imagenes")
+                        .HasForeignKey("ProveedorId");
                 });
         }
     }
