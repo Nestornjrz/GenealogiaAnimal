@@ -1,1 +1,0 @@
-03-03 16:40:15.402: V/FetchWatherTask(16381): Built URI http://api.openweathermap.org/data/2.5/forecast/daily?q=94043&mode=json&units=metric&cnt=7&APPID=417150c6004c3a260a6b44b4be34bc89

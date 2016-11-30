@@ -1,22 +1,23 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component} from '@angular/core';
 
-import { ListadoMarcasService } from './listadoMarcasService';
+//import { ListadoMarcasService } from './listadoMarcasService';
 
 @Component({
     selector: 'listado-marcas',
     template: require('./listadoMarcas.component.html'),
     styles: [require('./listadoMarcas.component.css')]
 })
-export class ListadoMarcas implements OnInit {
+export class ListadoMarcas {// implements OnInit {
     marcas: any[];
 
     errorMessage: string;
-    constructor(private _listadoMarcasService: ListadoMarcasService) { }
+    //constructor(private _listadoMarcasService: ListadoMarcasService) { }
 
     ngOnInit(): void {
-        this._listadoMarcasService.getMarcas()
-            .subscribe(marcas => this.marcas = marcas,
-            error => this.errorMessage = <any>error);
-        console.log("Se ejecuto el ngOnInit");
+        
+        //this._listadoMarcasService.getMarcas()
+        //    .subscribe(marcas => this.marcas = marcas,
+        //    error => this.errorMessage = <any>error);
+        //console.log("Se ejecuto el ngOnInit");
     }
 }

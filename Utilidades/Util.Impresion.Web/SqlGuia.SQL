@@ -1,6 +1,6 @@
 ﻿/*
 Created: 21/11/2016
-Modified: 28/11/2016
+Modified: 29/11/2016
 Model: Utilidades
 Database: MS SQL Server 2014
 */
@@ -54,7 +54,7 @@ go
 
 CREATE TABLE [guias].[Imagenes]
 (
- [ImagenID] Int NOT NULL,
+ [ImagenID] Int IDENTITY(1,1) NOT NULL,
  [ProveedorID] Int NOT NULL,
  [VigenteSn] Bit NOT NULL,
  [Nombre] Varchar(100) NOT NULL
@@ -75,7 +75,7 @@ go
 
 CREATE TABLE [guias].[ProveeClientes]
 (
- [ProveeClienteID] Int NOT NULL,
+ [ProveeClienteID] Int IDENTITY(1,1) NOT NULL,
  [Nombre] Varchar(100) NOT NULL,
  [ProveedorSn] Bit DEFAULT 0 NOT NULL,
  [ClienteSn] Bit DEFAULT 0 NOT NULL
