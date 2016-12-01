@@ -1,20 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UniversalModule } from 'angular2-universal';
+///Componente raiz
 import { AppComponent } from './components/app/app.component'
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
+///Componentes de ejemplo
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+////Libreria de terceros
+import { FileSelectDirective } from 'ng2-file-upload'; //https://github.com/valor-software/ng2-file-upload/issues/418
+////Componentes utilizados, reutilizados y/o propios
+import { NavMenuComponent } from './components/navmenu/navmenu.component';
+import { UploadFileComponent } from './components/uploadFile/uploadfile.component';
+
+/////Servicios
+
 
 @NgModule({
     bootstrap: [ AppComponent ],
     declarations: [
+        //Raiz
         AppComponent,
-        NavMenuComponent,
+        //Ejemplos
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        //Terceros
+        FileSelectDirective, //https://github.com/valor-software/ng2-file-upload/issues/418
+        //Propios
+        NavMenuComponent,
+        UploadFileComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -23,6 +38,7 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'upload-file', component: UploadFileComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

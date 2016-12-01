@@ -251,3 +251,4 @@ paket-files/
 .idea/
 *.sln.iml
 /Utilidades/Util.Impresion.Web/wwwroot/uploads
+/Utilidades/Util.Impresion.Web.V2/wwwroot/uploads
