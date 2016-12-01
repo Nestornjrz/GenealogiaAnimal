@@ -1,0 +1,21 @@
+﻿<form #form="ngForm" novalidate>
+    <div class="form-group" [class.has-error]="nombre.invalid && nombre.dirty">
+        <label class="control-label">Nombre</label>
+        <input #nombre="ngModel" type="text" name="nombre" required
+               class="form-control" [(ngModel)]="model.nombre" />
+        <div *ngIf="nombre.invalid && nombre.dirty" class="alert alert-danger">
+            El nombre es obligatorio
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Proveedor</label>
+        <select class="form-control" name="proveedorID" [(ngModel)]="model.proveedorID">
+            <option value="default">Seleccione</option>
+
+        </select>
+    </div>
+</form>
+<h3>{{proveedores | json}}</h3>
+<h3>{{model | json}}</h3>
+<h3>{{form.value | json}}</h3> 
+<h3>{{nombre.className}}</h3>  
