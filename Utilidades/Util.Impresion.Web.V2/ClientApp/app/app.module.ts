@@ -12,9 +12,9 @@ import { FileSelectDirective } from 'ng2-file-upload'; //https://github.com/valo
 ////Componentes utilizados, reutilizados y/o propios
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { UploadFileComponent } from './components/uploadFile/uploadfile.component';
-
-/////Servicios
-
+import { ListadoMarcas } from './components/listadoMarcas/listadoMarcas.component';
+////Servicios
+import { ListadoMarcasService } from './servicios/listadoMarcasService';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -29,7 +29,8 @@ import { UploadFileComponent } from './components/uploadFile/uploadfile.componen
         FileSelectDirective, //https://github.com/valor-software/ng2-file-upload/issues/418
         //Propios
         NavMenuComponent,
-        UploadFileComponent
+        UploadFileComponent,
+        ListadoMarcas
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -39,9 +40,11 @@ import { UploadFileComponent } from './components/uploadFile/uploadfile.componen
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'upload-file', component: UploadFileComponent },
+            { path: 'listado-marcas', component: ListadoMarcas },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+    ],
+    providers: [ListadoMarcasService]
 })
 export class AppModule {
 }
