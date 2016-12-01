@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Util.Impresion.Web.V2.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Util.Impresion.Web.V2
 {
@@ -30,6 +32,7 @@ namespace Util.Impresion.Web.V2
         {
             // Add framework services.
             services.AddMvc();
+            services.AddDbContext<GuiaDbContext>(opciones => opciones.UseSqlServer(Configuration.GetConnectionString("GuiaConeccion")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
