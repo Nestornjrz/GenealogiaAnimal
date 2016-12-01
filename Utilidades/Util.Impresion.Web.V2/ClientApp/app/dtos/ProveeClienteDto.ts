@@ -1,4 +1,8 @@
-﻿export interface IProveeClienteDto {
-    proveeClienteID: number;
-    nombre: string;
+﻿export class ProveeClienteDto {
+    constructor(
+        public proveeClienteID: number,
+        public nombre: string) {
+
+    }
+
 }

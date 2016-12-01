@@ -7,15 +7,22 @@
             El nombre es obligatorio
         </div>
     </div>
-    <div class="form-group">
-        <label>Proveedor</label>
-        <select class="form-control" name="proveedorID" [(ngModel)]="model.proveedorID">
-            <option value="default">Seleccione</option>
-
+    <div class="form-group" [class.has-error]="proveedorValidateError">
+        <label class="control-label">Proveedor</label>
+        <select class="form-control" 
+                name="proveedor" 
+                (change)="validateProveedoresSelect(proveedor.value)"
+                [(ngModel)]="model.proveedor"
+                #proveedor="ngModel">
+            <!--<option value="0">Seleccione</option>-->
+            <option *ngFor="let proveedor of proveedores" [ngValue]="proveedor">
+                {{proveedor.nombre}}
+            </option> 
         </select>
     </div>
 </form>
-<h3>{{proveedores | json}}</h3>
-<h3>{{model | json}}</h3>
-<h3>{{form.value | json}}</h3> 
-<h3>{{nombre.className}}</h3>  
+<h3>Proveedores: {{proveedores | json}}</h3>
+<h3>Model: {{model | json}}</h3>
+<h3>Model.proveedor: {{model.proveedor | json}}</h3>
+<h3>Form: {{form.value | json}}</h3> 
+<h3>nombre: {{nombre.className}}</h3>  

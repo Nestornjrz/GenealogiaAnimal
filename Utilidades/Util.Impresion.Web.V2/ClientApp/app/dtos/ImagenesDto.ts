@@ -1,4 +1,9 @@
-﻿export interface IImagenesDto {
-    proveedorID: number;
-    nombre: string;
+﻿import { ProveeClienteDto } from './ProveeClienteDto';
+export class ImagenDto {   
+    constructor(
+        public proveedor: ProveeClienteDto,
+        public nombre: string
+    ) { 
+
+    }
 }

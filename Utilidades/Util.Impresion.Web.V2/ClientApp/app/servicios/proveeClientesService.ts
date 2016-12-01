@@ -5,12 +5,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
-import { IProveeClienteDto } from '../dtos/ProveeClienteDto';
+import { ProveeClienteDto } from '../dtos/ProveeClienteDto';
 @Injectable()
 export class ProveeClientesService {
     constructor(private _http: Http) { }
     private _proveeClientesUrl = 'api/ProveeClientes/GetProveedores';
-    getProveedores(): Observable<[IProveeClienteDto]> {
+    getProveedores(): Observable<[ProveeClienteDto]> {
         return this._http.get(this._proveeClientesUrl)
             .map((response: Response) => <any[]>response.json())
             .do(data => console.log('TODOS:' + JSON.stringify(data)))
