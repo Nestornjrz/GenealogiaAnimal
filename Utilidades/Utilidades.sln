@@ -5,11 +5,13 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Util.Impresion.Web", "Util.Impresion.Web\Util.Impresion.Web.xproj", "{BA6A02E3-34D0-43E9-923F-741E383B624F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presntacion", "1-Presntacion", "{BA21E9F6-E6A0-4F99-A49A-E2F5626DFD91}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentacion", "1-Presentacion", "{BA21E9F6-E6A0-4F99-A49A-E2F5626DFD91}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Aplicacion", "2-Aplicacion", "{3B79532E-845D-4E92-A0FA-E17605B33B5B}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Util.Application.Dto", "Util.Application.Dto\Util.Application.Dto.xproj", "{59B9A620-29D4-43AE-B8E6-3793F56E0523}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Util.Impresion.Web.V2", "Util.Impresion.Web.V2\Util.Impresion.Web.V2.xproj", "{9AEF6B71-7793-4F49-BE28-C156D9CAB7C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{59B9A620-29D4-43AE-B8E6-3793F56E0523}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59B9A620-29D4-43AE-B8E6-3793F56E0523}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59B9A620-29D4-43AE-B8E6-3793F56E0523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AEF6B71-7793-4F49-BE28-C156D9CAB7C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AEF6B71-7793-4F49-BE28-C156D9CAB7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AEF6B71-7793-4F49-BE28-C156D9CAB7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AEF6B71-7793-4F49-BE28-C156D9CAB7C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BA6A02E3-34D0-43E9-923F-741E383B624F} = {BA21E9F6-E6A0-4F99-A49A-E2F5626DFD91}
 		{59B9A620-29D4-43AE-B8E6-3793F56E0523} = {3B79532E-845D-4E92-A0FA-E17605B33B5B}
+		{9AEF6B71-7793-4F49-BE28-C156D9CAB7C0} = {BA21E9F6-E6A0-4F99-A49A-E2F5626DFD91}
 	EndGlobalSection
 EndGlobal
